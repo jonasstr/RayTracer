@@ -1,5 +1,4 @@
-#ifndef VEC3_H
-#define VEC3_H
+#pragma once
 
 #include <iostream>
 #include <math.h>
@@ -27,22 +26,31 @@ public:
         return {x + s, y + s, z + s};
     }
 
+    inline Vec3 operator+(Vec3 v) const {
+        // Perform component-wise addition.
+        return {x + v.x, y + v.y, z + v.z};
+    }
+
     inline Vec3 operator-() const {
         return {-x, -y, -z};
     }
 
     inline Vec3 operator-(float s) {
-        // Perform component-wise subtraction.
         return {x - s, y - s, z - s};
     }
 
-    inline Vec3 operator*(Vec3 v) const {
-        return {x * v.x, y * v.y, z * v.z};
+    inline Vec3 operator-(Vec3 v) const {
+        // Perform component-wise subtraction.
+        return {x - v.x, y - v.y, z - v.z};
     }
 
     inline Vec3 operator*(float s) {
-        // Perform component-wise multiplication.
         return {x * s, y * s, z * s};
+    }
+
+    inline Vec3 operator*(Vec3 v) const {
+        // Perform component-wise multiplication.
+        return {x * v.x, y * v.y, z * v.z};
     }
 
     inline Vec3 operator/(Vec3 v) const {
@@ -138,6 +146,12 @@ public:
     float x, y, z;
 };
 
+
+
+inline Vec3 operator*(float s, const Vec3 &v) {
+    return {s * v.x, s * v.y, s * v.t};
+}
+
 inline float dot(const Vec3 &v1, const Vec3 &v2) {
     return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
 }
@@ -147,5 +161,3 @@ inline Vec3 cross(const Vec3 &v1, const Vec3 &v2) {
             (-(v1.x * v2.z - v1.z * v2.x)),
             (v1.x * v2.y - v1.y * v2.x)};
 }
-
-#endif
