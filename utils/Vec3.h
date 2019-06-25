@@ -7,6 +7,8 @@ class Vec3 {
 
 public:
 
+    Vec3() {}
+
     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
 
     explicit Vec3(float s) : x(s), y(s), z(s) {}
@@ -149,7 +151,7 @@ public:
 
 
 inline Vec3 operator*(float s, const Vec3 &v) {
-    return {s * v.x, s * v.y, s * v.t};
+    return {s * v.x, s * v.y, s * v.z};
 }
 
 inline float dot(const Vec3 &v1, const Vec3 &v2) {

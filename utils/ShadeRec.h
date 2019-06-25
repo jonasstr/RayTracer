@@ -2,13 +2,15 @@
 
 #include "Vec3.h"
 
+class Scene;
 struct ShadeRec {
 
     bool hitAnyObject;
     Vec3 localHitPoint;
     Vec3 normal;
     Vec3 color;
-    //World& world;
 
-    ShadeRec(World &world);
+    Scene* scene;
+
+    ShadeRec(Scene* scene);
 };

@@ -1,12 +1,14 @@
 #include <stdlib.h>
 #include <iostream>
 #include <sstream>
+#include <Scene.h>
+#include "RedSphereScene.cpp"
 
-#include "ImageIO.cpp"
+#include "ImageIO.h"
 
 int main() {
 
-    const int width = 255;
+    /*const int width = 255;
     const int height = 255;
 
     ImageIO img("test.ppm", width, height);
@@ -16,8 +18,11 @@ int main() {
             const int r = x % 255;
             const int g = y % 255;
             const int b = y * x % 255;
-            img.set(Vec3(r, g, b));
+            img.setPixel(Vec3(r, g, b));
         }
     }
-    img.open();
+    img.open();*/
+
+    Scene* scene = new RedSphereScene();
+    scene->render("test.ppm");
 }

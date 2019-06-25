@@ -6,6 +6,8 @@ class ImageIO {
 
 public:
 
+    ImageIO();
+
     ImageIO(const std::string &imgPath, const int width, const int height)
             : imgPath(imgPath), out(imgPath) {
         out << "P3" << std::endl;
@@ -13,8 +15,11 @@ public:
         out << "255" << std::endl;
     };
 
-    void set(Vec3 pixelColor) {
-        out << pixelColor.r() << " " << pixelColor.g() << " " << pixelColor.b() << std::endl;
+    void setPixel(Vec3 pixelColor) {
+        const int r = int(pixelColor.r() * 255.99);
+        const int g = int(pixelColor.g() * 255.99);
+        const int b = int(pixelColor.b() * 255.99);
+        out << r << " " << g << " " << b << std::endl;
     }
 
     void open() {
