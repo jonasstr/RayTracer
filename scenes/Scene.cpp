@@ -26,3 +26,20 @@ void Scene::render(const std::string &outputPath) {
     }
     img.open();
 }
+
+ShadeRec Scene::hitNearest(const Ray &ray) {
+
+    ShadeRec rec(*this);
+    double t;
+    double tMin = kInfinity;
+    const int numObjects = objects.size();
+
+    for (int i = 0; i < numObjects; i++) {
+        if (objects[i]->hit(ray, t, rec) && (t < tMin)) {
+            rec.hitAnyObject = true;
+            tMin = t;
+            rec.color = objects[i]->getColor();
+        }
+    }
+    return rec;
+}

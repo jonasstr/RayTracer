@@ -6,9 +6,9 @@ class SingleSphere : public Tracer {
 
 public:
 
-    SingleSphere();
+    SingleSphere() = default;
 
-    SingleSphere(Scene* worldPtr);
+    explicit SingleSphere(Scene* worldPtr);
 
     Vec3 traceRay(const Ray &ray) const override;
 };

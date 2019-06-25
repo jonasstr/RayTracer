@@ -16,4 +16,16 @@ public:
      * @return whether the ray hits the object
      */
     virtual bool hit(const Ray &ray, double &tMin, ShadeRec &rec) const = 0;
+
+    inline Vec3 getColor() const {
+        return color;
+    };
+
+    inline void setColor(Vec3 color) {
+        this->color = color;
+    }
+
+private:
+
+    Vec3 color;
 };

@@ -2,27 +2,12 @@
 #include <iostream>
 #include <sstream>
 #include <Scene.h>
-#include "RedSphereScene.cpp"
+#include "MultiObjectsScene.cpp"
 
 #include "ImageIO.h"
 
 int main() {
 
-    /*const int width = 255;
-    const int height = 255;
-
-    ImageIO img("test.ppm", width, height);
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-
-            const int r = x % 255;
-            const int g = y % 255;
-            const int b = y * x % 255;
-            img.setPixel(Vec3(r, g, b));
-        }
-    }
-    img.open();*/
-
-    Scene* scene = new RedSphereScene();
-    scene->render("test.ppm");
+    Scene* scene = new MultiObjectsScene();
+    scene->render("render.ppm");
 }

@@ -14,7 +14,7 @@ public:
 
     explicit Tracer(Scene *scenePtr);
 
-    ~Tracer();
+    virtual ~Tracer();
 
     virtual Vec3 traceRay(const Ray &ray) const;
 

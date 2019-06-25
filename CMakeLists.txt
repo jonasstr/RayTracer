@@ -21,7 +21,10 @@ add_executable(ToyTracer
         scenes/Scene.cpp
         scenes/Scene.h
         scenes/RedSphereScene.cpp
+        scenes/MultiObjectsScene.cpp
         tracers/SingleSphere.h
+        tracers/MultiObjects.cpp
+        tracers/MultiObjects.h
         main.cpp)
 
 include_directories(

@@ -3,6 +3,7 @@
 #include "Vec3.h"
 
 class Scene;
+
 struct ShadeRec {
 
     bool hitAnyObject;
@@ -10,7 +11,6 @@ struct ShadeRec {
     Vec3 normal;
     Vec3 color;
 
-    Scene* scene;
-
-    ShadeRec(Scene* scene);
+    Scene &scene;
+    explicit ShadeRec(Scene &scene);
 };

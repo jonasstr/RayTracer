@@ -1,9 +1,8 @@
 #include "Sphere.h"
-
-const double Sphere::kEpsilon = 0.001;
+#include "Constants.h"
 
 Sphere::Sphere()
-        : radius(0) {};
+        : radius(0) {}
 
 Sphere::Sphere(const Vec3 &center, double radius)
         : center(center), radius(radius) {}
