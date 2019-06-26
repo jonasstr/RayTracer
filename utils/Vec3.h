@@ -7,7 +7,7 @@ class Vec3 {
 
 public:
 
-    Vec3() {}
+    Vec3() = default;
 
     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
 
@@ -117,9 +117,9 @@ public:
 
     inline Vec3 &operator/=(const float s) {
         const float k = 1 / s;
-        x /= k;
-        y /= k;
-        z /= k;
+        x *= k;
+        y *= k;
+        z *= k;
         return *this;
     };
 
@@ -147,7 +147,6 @@ public:
 
     float x, y, z;
 };
-
 
 
 inline Vec3 operator*(float s, const Vec3 &v) {

@@ -12,5 +12,6 @@ struct ShadeRec {
     Vec3 color;
 
     Scene &scene;
+
     explicit ShadeRec(Scene &scene);
 };

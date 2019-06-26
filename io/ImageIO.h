@@ -6,8 +6,6 @@ class ImageIO {
 
 public:
 
-    ImageIO();
-
     ImageIO(const std::string &imgPath, const int width, const int height)
             : imgPath(imgPath), out(imgPath) {
         out << "P3" << std::endl;

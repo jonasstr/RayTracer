@@ -21,8 +21,8 @@ public:
         return color;
     };
 
-    inline void setColor(Vec3 color) {
-        this->color = color;
+    inline void setColor(Vec3 c) {
+        color = c;
     }
 
 private:

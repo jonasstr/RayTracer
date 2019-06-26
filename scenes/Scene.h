@@ -2,6 +2,7 @@
 
 #include <vector>
 
+#include "Sampler.h"
 #include "Tracer.h"
 #include "primitives/Sphere.h"
 
@@ -11,11 +12,14 @@ public:
 
     int hRes; // Screen width
     int vRes; // Screen height
-    float pixelSize;
-    int gamma;
+    float pixelSize = 1.0;
+    int numSamples;
+
+    int gamma = 1;
 
     Vec3 backgroundColor;
     Tracer *tracerPtr;
+    Sampler *samplerPtr;
     std::vector<GeometricObject*> objects;
 
     Sphere sphere;
@@ -38,6 +42,10 @@ public:
     ShadeRec hitNearest(const Ray &ray);
 
     void render(const std::string &outputPath);
+
+    void setSampler(Sampler *sampler);
+
+    void setSamples(const int samples);
 
 protected:
 

@@ -8,8 +8,7 @@ MultiObjects::MultiObjects(Scene *scenePtr) :
 
 Vec3 MultiObjects::traceRay(const Ray &ray) const {
 
-    ShadeRec rec(scenePtr->hitNearest(ray));
-
+    ShadeRec rec = scenePtr->hitNearest(ray);
     if (rec.hitAnyObject) {
         return rec.color;
     } else {

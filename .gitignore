@@ -1,4 +1,10 @@
 # Cmake files
 cmake-build-debug/
 
+# Download files from raytracegroundup.com
+downloads/
+
+# Third-party libraries
+vendor/
+
 *.idea/
