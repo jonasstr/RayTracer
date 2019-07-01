@@ -4,6 +4,9 @@ cmake-build-debug/
 # Download files from raytracegroundup.com
 downloads/
 
+# Rendered images
+renders/
+
 # Third-party libraries
 vendor/
 

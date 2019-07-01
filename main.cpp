@@ -3,11 +3,10 @@
 #include <sstream>
 #include <Scene.h>
 #include "SamplerScene.cpp"
-
-#include "ImageIO.h"
+#include "SpheresScene.cpp"
 
 int main() {
 
-    Scene* scene = new SamplerScene();
-    scene->render("render.ppm");
+    Scene* scene = new RedSphereScene("render.ppm");
+    scene->render();
 }

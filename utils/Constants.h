@@ -8,3 +8,6 @@ static const Vec3 red(1, 0, 0);
 
 static const double kEpsilon = 0.0001;
 static const double kInfinity = 1.0E10;
+
+static const float TWO_PI = 6.283185307179586476925;
+static const float QUARTER_PI = 0.7853981633974483096157;

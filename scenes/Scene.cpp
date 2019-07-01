@@ -1,10 +1,19 @@
-#include <Regular.h>
-#include <Jittered.h>
-#include "ImageIO.h"
-#include "Ray.h"
+#include "Regular.h"
+#include "Jittered.h"
 #include "Scene.h"
 
-void Scene::render(const std::string &outputPath) {
+Scene::Scene(const std::string &outputPath)
+        : img(outputPath),
+          hRes(200),
+          vRes(200),
+          pixelSize(1.0),
+          gamma(1),
+          backgroundColor(black),
+          numSamples(1),
+          tracerPtr(nullptr),
+          samplerPtr(nullptr) {}
+
+void Scene::render() {
 
     // Call setUp() method implemented in subclasses.
     setUp();
@@ -12,34 +21,22 @@ void Scene::render(const std::string &outputPath) {
         std::cerr << "No tracer pointer specified, exiting!" << std::endl;
         return;
     }
-
-    ImageIO img(outputPath, hRes, vRes);
-
-    Vec2 sampleUnitPoint{}; // Sample point on the unit square.
-    double x, y;
-    const float zw = 100.0;
-    Vec3 pixelColor{};
-
-    Ray ray;
-    ray.dir = Vec3(0, 0, -1);
-
-    for (int row = vRes - 1; row >= 0; row--) {
-        for (int col = 0; col < hRes; col++) {
-            pixelColor = black;
-            // Apply per-pixel sampling.
-            for (int i = 0; i < numSamples; i++) {
-                sampleUnitPoint = samplerPtr->nextSample();
-                x = pixelSize * (col - 0.5 * hRes + sampleUnitPoint.x);
-                y = pixelSize * (row - 0.5 * vRes + sampleUnitPoint.y);
-                ray.origin = Vec3(x, y, zw);
-                pixelColor += tracerPtr->traceRay(ray);
-            }
-            // Average the colors.
-            pixelColor /= numSamples;
-            img.setPixel(pixelColor);
-        }
+    if (samplerPtr == nullptr) {
+        std::cerr << "No sampler pointer specified, exiting!" << std::endl;
+        return;
     }
+    if (cameraPtr == nullptr) {
+        std::cerr << "No camera pointer specified, exiting!" << std::endl;
+        return;
+    }
+
+    img.setDimensions(vRes, hRes);
+    cameraPtr->render(*this);
     img.open();
+}
+
+void Scene::displayPixel(const Vec3 &pixelColor) {
+    img.setPixel(pixelColor);
 }
 
 ShadeRec Scene::hitNearest(const Ray &ray) {
@@ -84,4 +81,12 @@ void Scene::setSamples(const int samples) {
     }
 }
 
+void Scene::setCamera(Camera *camera) {
 
+    if (samplerPtr) {
+        delete samplerPtr;
+        samplerPtr = nullptr;
+    }
+    cameraPtr = camera;
+    cameraPtr->computeUVW();
+}

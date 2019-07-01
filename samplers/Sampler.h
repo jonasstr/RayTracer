@@ -4,6 +4,7 @@
 #include <random>
 
 #include "Vec2.h"
+#include "Vec3.h"
 
 class Sampler {
 
@@ -15,7 +16,13 @@ public:
 
     virtual ~Sampler() = default;
 
-    virtual Vec2 nextSample() final;
+    virtual Vec2 nextSquareSample() final;
+
+    virtual Vec2 nextDiskSample() final;
+
+    virtual void mapSamplesToUnitDisk() final;
+
+    virtual void mapSamplesToHemisphere(float e) final;
 
     inline int getNumSamples() { return numSamples; }
 
@@ -24,6 +31,8 @@ protected:
     int numSamples; // The number of sample points in a pattern.
     int numSets; // The number of patterns stored.
     std::vector<Vec2> samples; // Sample points on a unit square.
+    std::vector<Vec2> diskSamples; // Sample points on a unit disk.
+    std::vector<Vec3> hemisphereSamples; // Sample points on a hemisphere.
     std::vector<int> shuffledIndices; // Shuffled sample indices.
     unsigned long count; // The current number of sample points used.
     int jump; // Random index jump.

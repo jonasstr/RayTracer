@@ -1,27 +1,31 @@
 #pragma once
 
-#include <vector>
+#include "ImageIO.h"
 
 #include "Sampler.h"
 #include "Tracer.h"
-#include "primitives/Sphere.h"
+#include "Sphere.h"
+
+#include "Camera.h"
 
 class Scene {
 
 public:
 
+    explicit Scene(const std::string &outputPath);
+
     int hRes; // Screen width
     int vRes; // Screen height
-    float pixelSize = 1.0;
-    int numSamples;
+    float pixelSize;
 
-    int gamma = 1;
+    int numSamples;
+    int gamma;
 
     Vec3 backgroundColor;
+
     Tracer *tracerPtr;
     Sampler *samplerPtr;
-    std::vector<GeometricObject*> objects;
-
+    std::vector<GeometricObject *> objects;
     Sphere sphere;
 
     ~Scene() {
@@ -41,11 +45,15 @@ public:
      */
     ShadeRec hitNearest(const Ray &ray);
 
-    void render(const std::string &outputPath);
+    void render();
+
+    void displayPixel(const Vec3 &pixelColor);
 
     void setSampler(Sampler *sampler);
 
-    void setSamples(const int samples);
+    void setSamples(int samples);
+
+    void setCamera(Camera* camera);
 
 protected:
 
@@ -53,5 +61,10 @@ protected:
      * Initialize scene-specific variables in subclasses.
      */
     virtual void setUp() = 0;
+
+private:
+
+    ImageIO img;
+    Camera *cameraPtr{};
 };
 

@@ -21,7 +21,7 @@ add_executable(ToyTracer
         tracers/SingleSphere.cpp
         scenes/Scene.cpp
         scenes/Scene.h
-        scenes/RedSphereScene.cpp
+        scenes/SpheresScene.cpp
         scenes/MultiObjectsScene.cpp
         scenes/SamplerScene.cpp
         tracers/SingleSphere.h
@@ -35,13 +35,15 @@ add_executable(ToyTracer
         samplers/Regular.h
         samplers/NRooks.cpp
         samplers/NRooks.h
-        main.cpp)
+        main.cpp cameras/Camera.cpp cameras/Camera.h cameras/Pinhole.cpp cameras/Pinhole.h)
 
 include_directories(
         io
         utils
         objects
+        objects/primitives
         scenes
         samplers
         tracers
+        cameras
         vendor)

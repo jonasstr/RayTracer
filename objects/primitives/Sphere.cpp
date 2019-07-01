@@ -2,7 +2,8 @@
 #include "Constants.h"
 
 Sphere::Sphere()
-        : radius(0) {}
+        : radius(50),
+          center(Vec3(0)) {}
 
 Sphere::Sphere(const Vec3 &center, double radius)
         : center(center), radius(radius) {}
