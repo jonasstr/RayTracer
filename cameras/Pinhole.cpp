@@ -30,7 +30,6 @@ void Pinhole::render(Scene &scene) {
                 ray.dir = getRayDirection(p);
                 pixelColor += scene.tracerPtr->traceRay(ray);
             }
-            // Average the colors
             pixelColor /= scene.numSamples;
             pixelColor *= exposureTime;
             scene.displayPixel(pixelColor);

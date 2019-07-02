@@ -2,11 +2,11 @@
 #include <iostream>
 #include <sstream>
 #include <Scene.h>
-#include "SamplerScene.cpp"
+#include "LensScene.cpp"
 #include "SpheresScene.cpp"
 
 int main() {
 
-    Scene* scene = new RedSphereScene("render.ppm");
+    Scene* scene = new LensScene("render.ppm");
     scene->render();
 }

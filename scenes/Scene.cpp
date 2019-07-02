@@ -18,15 +18,15 @@ void Scene::render() {
     // Call setUp() method implemented in subclasses.
     setUp();
     if (tracerPtr == nullptr) {
-        std::cerr << "No tracer pointer specified, exiting!" << std::endl;
+        std::cerr << "Scene::render - No tracer pointer specified, exiting!" << std::endl;
         return;
     }
     if (samplerPtr == nullptr) {
-        std::cerr << "No sampler pointer specified, exiting!" << std::endl;
+        std::cerr << "Scene::render - No sampler pointer specified, exiting!" << std::endl;
         return;
     }
     if (cameraPtr == nullptr) {
-        std::cerr << "No camera pointer specified, exiting!" << std::endl;
+        std::cerr << "Scene::render - No camera pointer specified, exiting!" << std::endl;
         return;
     }
 
@@ -83,9 +83,9 @@ void Scene::setSamples(const int samples) {
 
 void Scene::setCamera(Camera *camera) {
 
-    if (samplerPtr) {
-        delete samplerPtr;
-        samplerPtr = nullptr;
+    if (cameraPtr) {
+        delete cameraPtr;
+        cameraPtr = nullptr;
     }
     cameraPtr = camera;
     cameraPtr->computeUVW();

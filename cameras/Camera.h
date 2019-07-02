@@ -10,7 +10,7 @@ public:
 
     Camera();
 
-    void computeUVW();
+    virtual ~Camera() = default;
 
     virtual void render(Scene &scene) = 0;
 
@@ -31,4 +31,8 @@ protected:
     Vec3 u, v, w; // The basis vectors for the viewing coordinate system
 
     float exposureTime;
+
+public:
+
+    void computeUVW();
 };

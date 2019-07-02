@@ -7,7 +7,10 @@ Camera::Camera()
           u(1, 0, 0),
           v(0, 1, 0),
           w(0, 0, 1),
-          exposureTime(1) {}
+          exposureTime(1) {
+
+    computeUVW();
+}
 
 void Camera::computeUVW() {
 

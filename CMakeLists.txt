@@ -35,7 +35,7 @@ add_executable(ToyTracer
         samplers/Regular.h
         samplers/NRooks.cpp
         samplers/NRooks.h
-        main.cpp cameras/Camera.cpp cameras/Camera.h cameras/Pinhole.cpp cameras/Pinhole.h)
+        main.cpp cameras/Camera.cpp cameras/Camera.h cameras/Pinhole.cpp cameras/Pinhole.h cameras/ThinLens.cpp cameras/ThinLens.h scenes/LensScene.cpp samplers/Random.cpp samplers/Random.h)
 
 include_directories(
         io

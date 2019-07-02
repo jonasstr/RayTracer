@@ -32,7 +32,7 @@ Sampler::Sampler(const int numSamples)
 Vec2 Sampler::nextSquareSample() {
 
     if (count % numSamples == 0) { // Start of a new pixel
-        jump = (randInt(numSets)) * numSamples;
+        jump = randInt(numSets) * numSamples;
     }
     return samples[jump + shuffledIndices[jump + count++ % numSamples]];
 }
@@ -100,7 +100,7 @@ void Sampler::mapSamplesToHemisphere(const float e) {
 }
 
 int Sampler::randInt(const int max) {
-    std::uniform_int_distribution<int> dist(0, max);
+    std::uniform_int_distribution<int> dist(0, max - 1);
     return dist(mt);
 }
 

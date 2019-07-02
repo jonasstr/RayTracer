@@ -3,11 +3,11 @@
 #include <MultiObjects.h>
 #include "Scene.h"
 
-class RedSphereScene : public Scene {
+class SpheresScene : public Scene {
 
 public:
 
-    explicit RedSphereScene(const std::string &outputPath)
+    explicit SpheresScene(const std::string &outputPath)
             : Scene(outputPath) {}
 
 protected:

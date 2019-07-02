@@ -9,9 +9,11 @@ public:
 
     Vec3() = default;
 
-    Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+    Vec3(float x, float y, float z)
+            : x(x), y(y), z(z) {}
 
-    explicit Vec3(float s) : x(s), y(s), z(s) {}
+    explicit Vec3(float s)
+            : x(s), y(s), z(s) {}
 
     inline float r() const { return x; }
 
@@ -68,13 +70,10 @@ public:
         switch (i) {
             case 0:
                 return x;
-                break;
             case 1:
                 return y;
-                break;
             case 2:
                 return z;
-                break;
             default:
                 throw std::invalid_argument("Invalid array index");
         }
