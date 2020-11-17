@@ -1,0 +1,19 @@
+
+executablesList : List<String>
+
+find add_executable
+nextLine()
+startLine = currentLine
+
+While nextChar != ')':
+    for each line:
+        if line != main.cpp:
+            add line to executablesList
+            delete line
+
+sort executablesList
+currentLine = startLine
+
+for exe in executablesList:
+    append exe to currentLine
+    nextLine()

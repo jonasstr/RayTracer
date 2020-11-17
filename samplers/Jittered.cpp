@@ -6,7 +6,6 @@ Jittered::Jittered()
 
 Jittered::Jittered(const int numSamples)
         :Sampler(numSamples) {
-
     generateSamples();
 }
 

@@ -4,9 +4,10 @@
 #include <Scene.h>
 #include "LensScene.cpp"
 #include "SpheresScene.cpp"
+#include "FishEyeScene.cpp"
 
 int main() {
 
-    Scene* scene = new LensScene("render.ppm");
+    Scene* scene = new FishEyeScene("render.ppm");
     scene->render();
 }

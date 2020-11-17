@@ -1,18 +1,16 @@
 
 #include <MultiJittered.h>
+#include <FishEye.h>
 #include "MultiObjects.h"
-#include "Pinhole.h"
-#include "Regular.h"
-#include "Random.h"
 #include "ThinLens.h"
 #include "Jittered.h"
 #include "Scene.h"
 
-class LensScene : public Scene {
+class FishEyeScene : public Scene {
 
 public:
 
-    explicit LensScene(const std::string &outputPath)
+    explicit FishEyeScene(const std::string &outputPath)
             : Scene(outputPath) {}
 
 protected:
@@ -25,14 +23,8 @@ protected:
         const int numSamples = 80;
         setSamples(numSamples);
 
-        auto* lens = new ThinLens();
-        lens->setSampler(new MultiJittered(numSamples));
-        lens->setZoom(2);
-        lens->setPosition(0, 0, 150);
-        lens->setLensRadius(30);
-        lens->setViewDistance(110.0);
-        lens->setFocalDistance(150.0);
-        setCamera(lens);
+        auto* camera = new FishEye();
+        setCamera(camera);
 
         tracerPtr = new MultiObjects(this);
 
@@ -55,4 +47,5 @@ protected:
         addObject(blueSphere);
     }
 };
+
 

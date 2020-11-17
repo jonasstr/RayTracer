@@ -50,6 +50,8 @@ protected:
 
     virtual int randInt(int max) final;
 
+    virtual int randInt(int min, int max) final;
+
 private:
 
     std::mt19937 mt;

@@ -104,6 +104,11 @@ int Sampler::randInt(const int max) {
     return dist(mt);
 }
 
+int Sampler::randInt(const int min, const int max) {
+    std::uniform_int_distribution<int> dist(min, max);
+    return dist(mt);
+}
+
 void Sampler::shuffleXCoordinates() {
 
     for (int p = 0; p < numSets; p++) {
